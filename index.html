@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Rating System</title>
+    <style>
+    
+        .stars {
+            display: flex;
+            direction: row;
+            cursor: pointer;
+        }
+        .star {
+            font-size: 2rem;
+            color: rgb(128, 188, 226);
+            transition: color 0.2s;
+        }
+        .star.selected {
+            color: rgb(212, 239, 160);
+        }
+        .star:hover,
+        .star:hover ~ .star {
+            color: pink;
+        }
+   
+
+
+.body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f8ff;
+}
+.container {
+    padding: 20px;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+input[type="number"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #218838;
+}
+.result {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+
+.body {
+        font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #eaadd5;
+            padding: 20px;
+        }
+        .faq-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: rgb(206, 240, 164);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(171, 199, 230, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        .faq-question {
+            font-weight: bold;
+            cursor: pointer;
+            background-color: #a5e4ae;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            margin-top: 5px;
+            border-left: 3px solid #eb0caf;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0; 
+            color: #333; 
+            padding: 20px;
+        }
+        body.dark-mode {
+            background-color: #333; 
+            color: #f0f0f0; 
+        }
+        .theme-toggle {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .theme-toggle:hover {
+            background-color: #0056b3;
+}
+
+</style>
+</head>
+<body>
+
+
+    <h2>Rate Us</h2>
+    <div class="stars" id="star-container">
+        <span class="star" data-value="1">&#9733;</span>
+        <span class="star" data-value="2">&#9733;</span>
+        <span class="star" data-value="3">&#9733;</span>
+        <span class="star" data-value="4">&#9733;</span>
+        <span class="star" data-value="5">&#9733;</span>
+    </div>
+    <p id="rating-value">Rating: 0</p>
+    
+
+<div class="container">
+ <h3>BMI Calculator</h3>
+<label for="weight">Weight (kg):</label><br>
+<input type="number" id="weight" placeholder="Enter your weight"><br>
+
+<label for="height">Height (m):</label><br>
+<input type="number" id="height" step="0.01" placeholder="Enter your height"><br>
+
+<button onclick="calculateBMI()">Calculate BMI</button>
+
+<div class="result" id="result"></div>
+</div>
+
+
+<div class="faq-container"></div>
+<h4>Frequently Asked Questions</h4>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(1)">What is HTML?</div>
+        <div class="faq-answer" id="answer-1">
+            HTML stands for HyperText Markup Language. It is the standard language for creating webpages and web applications.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(2)">What is CSS?</div>
+        <div class="faq-answer" id="answer-2">
+            CSS stands for Cascading Style Sheets. It describes how HTML elements are to be displayed on a screen, paper, or other media.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(3)">What is JavaScript?</div>
+        <div class="faq-answer" id="answer-3">
+            JavaScript is a programming language that allows you to implement complex features on web pages, such as interactive content.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(4)">What is a full-stack developer?</div>
+        <div class="faq-answer" id="answer-4">
+            A full-stack developer is someone who works with both the front end and back end of a website or web application.
+        </div>
+    </div>
+
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(5)">What are Functions in JavaScript?</div>
+        <div class="faq-answer" id="answer-5">
+            Functions are reusable blocks of code that can be executed by calling them. Functions allow you to define behavior and run the same block of code multiple times with different inputs.
+        </div>
+    </div>
+
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(6)">What is DOM in JavaScript?</div>
+        <div class="faq-answer" id="answer-6">
+            The DOM (Document Object Model) is a programming interface for web documents. It represents the structure of a web page, allowing JavaScript to access and manipulate HTML elements dynamically.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(7)">How do you add elements to the DOM?</div>
+        <div class="faq-answer" id="answer-7">
+            You can add elements to the DOM in JavaScript using methods like <code>document.createElement()</code>, <code>appendChild()</code>, and <code>insertBefore()</code>. These methods allow you to dynamically create and insert elements into the webpage.
+        </div>
+    </div>
+
+</div>
+
+<h1>Light/Dark Theme Toggle</h1>
+<p>Click the button below to toggle between light and dark themes.</p>
+<button class="theme-toggle" id="themeToggle">Switch to Dark Theme</button>
+
+
+
+</div>
+</body>
+<script>
+
+// 1. create a program to give Dynamic rating with Js?
+
+    const stars = document.querySelectorAll('.star');
+    const ratingValueDisplay = document.getElementById('rating-value');
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            selectedRating = star.getAttribute('data-value');
+            updateRating(selectedRating);
+        });
+
+        star.addEventListener('mouseover', () => {
+            highlightStars(star.getAttribute('data-value'));
+        });
+
+        star.addEventListener('mouseleave', () => {
+            highlightStars(selectedRating);
+        });
+    });
+
+    function updateRating(rating) {
+        ratingValueDisplay.innerText = `Rating: ${rating}`;
+        highlightStars(rating);
+    }
+
+    function highlightStars(rating) {
+        stars.forEach(star => {
+            if (star.getAttribute('data-value') <= rating) {
+                star.classList.add('selected');
+            } else {
+                star.classList.remove('selected');
+            }
+        });
+    }
+
+// 2.Create a program of BMI Mass Claculation use these formula for calculation?       
+   // BMI=Weight/(height(m))^2
+function calculateBMI() {
+        const weight = parseFloat(document.getElementById('weight').value); 
+        const height = parseFloat(document.getElementById('height').value);
+
+        if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+            document.getElementById('result').innerText = "Please enter valid weight and height.";
+            return;
+        }
+
+        const bmi = weight / (height * height);
+        let category = '';
+      if (bmi < 18.5) {
+            category = 'Underweight';
+        } else if (bmi >= 18.5 && bmi <= 24.9) {
+            category = 'Normal weight';
+        } else if (bmi >= 25 && bmi <= 29.9) {
+            category = 'Overweight';
+        } else {
+            category = 'Obese';
+        }
+
+        document.getElementById('result').innerText = `Your BMI is ${bmi.toFixed(2)} (${category})`;
+    }
+
+//3.create a program on a FAQ page with Js?
+    
+function toggleAnswer(id) {
+        const answer = document.getElementById(`answer-${id}`);
+        if (answer.style.display === "none" || answer.style.display === "") {
+            answer.style.display = "block";
+        } else {
+            answer.style.display = "none";
+        }
+    }
+
+
+
+//4.Create a program to a toggle light and dark Theme?
+const themeToggleButton = document.getElementById('themeToggle');
+
+    themeToggleButton.addEventListener('click', () => {
+        console.log('hello');
+        
+        document.body.classList.toggle('dark-mode');
+
+        // Update button text based on the current theme.
+        if (document.body.classList.contains('dark-mode')) {
+            themeToggleButton.textContent = 'Switch to Light Theme';
+        } else {
+            themeToggleButton.textContent = 'Switch to Dark Theme';
+        }
+    });
+
+
+</script>
+</html>
+
+
+
